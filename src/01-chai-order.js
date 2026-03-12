@@ -46,21 +46,75 @@
  *   hasSpecialIngredient("Elaichi Chai", "elaichi")  // => true
  */
 export function getChaiOrderLength(order) {
-  // Your code here
+  // Agar order string nahi hai, return -1
+  if (typeof order !== 'string') {
+    return -1;
+  }
+  // Pehle .trim() se extra spaces hatao, phir .length se count karo
+  return order.trim().length;
 }
 
 export function shoutChaiOrder(order) {
-  // Your code here
+  // Agar order string nahi hai ya trim ke baad empty hai, return ""
+  if (typeof order !== 'string') {
+    return "";
+  }
+  
+  const trimmedOrder = order.trim();
+  // Agar trim ke baad empty hai, return ""
+  if (!trimmedOrder) {
+    return "";
+  }
+  
+  // Uppercase mein shout karo
+  return trimmedOrder.toUpperCase();
 }
 
 export function whisperChaiOrder(order) {
-  // Your code here
+  // Agar order string nahi hai, return ""
+  if (typeof order !== 'string') {
+    return "";
+  }
+  
+  const trimmedOrder = order.trim();
+  // Agar trim ke baad empty hai, return ""
+  if (!trimmedOrder) {
+    return "";
+  }
+  
+  // Secret order ke liye lowercase
+  return trimmedOrder.toLowerCase();
 }
 
 export function hasSpecialIngredient(order, ingredient) {
-  // Your code here
+  // Agar koi bhi string nahi hai, return false
+  if (typeof order !== 'string' || typeof ingredient !== 'string') {
+    return false;
+  }
+  
+  // Dono ko lowercase mein convert karke .includes() check karo
+  const lowerOrder = order.toLowerCase();
+  const lowerIngredient = ingredient.toLowerCase();
+  
+  return lowerOrder.includes(lowerIngredient);
 }
 
 export function getFirstAndLastChar(order) {
-  // Your code here
+  // Agar order string nahi hai ya trim ke baad empty hai, return null
+  if (typeof order !== 'string') {
+    return null;
+  }
+  
+  const trimmedOrder = order.trim();
+  
+  // Agar trim ke baad empty hai, return null
+  if (!trimmedOrder) {
+    return null;
+  }
+  
+  // .charAt(0) se first, .at(-1) se last character
+  return {
+    first: trimmedOrder.charAt(0),
+    last: trimmedOrder.at(-1)
+  };
 }
